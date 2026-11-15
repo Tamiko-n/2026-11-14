@@ -1,0 +1,32 @@
+﻿python : 2026-11-14 18:32:38.792 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': 
+missing ScriptRunContext! This warning can be ignored when running in bare mode.
+At line:17 char:1
++ python -u -c "import faulthandler,runpy; faulthandler.dump_traceback_ ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-11-14 18:3...g in bare mode.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Timeout (0:00:30)!
+Thread 0x00001af4 (most recent call first):
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 294 in accept
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\socket.py", line 645 in socketpair
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 784 in 
+_make_self_pipe
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\asyncio\proactor_events.py", line 639 in __init__
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\asyncio\windows_events.py", line 315 in __init__
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 699 in new_event_loop
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\asyncio\events.py", line 810 in new_event_loop
+  File 
+"C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\local_script_runner.py", 
+line 68 in __init__
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\app_test.py", 
+line 679 in _run
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\element_tree.py", 
+line 4251 in run
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\app_test.py", 
+line 801 in run
+  File "work/check.py", line 5 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 98 in _run_module_code
+  File "<frozen runpy>", line 291 in run_path
+  File "<string>", line 1 in <module>
