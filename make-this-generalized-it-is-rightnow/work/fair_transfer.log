@@ -1,0 +1,37 @@
+﻿austin: 20 training, 5 unseen, 0 excluded homes
+california: 18 training, 5 unseen, 0 excluded homes
+newyork: 20 training, 5 unseen, 0 excluded homes
+puertorico: 8 training, 2 unseen, 15 excluded homes
+train: 75,900 windows
+val: 39,600 windows
+test: 39,600 windows
+unseen: 10,200 windows
+python : 
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+At line:17 char:1
++ python -u -m nilm.transfer *> work/fair_transfer.log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Asus\A...l known labels.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2939: 
+UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2939: 
+UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
