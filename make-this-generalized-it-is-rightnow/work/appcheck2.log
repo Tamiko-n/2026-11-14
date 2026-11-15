@@ -1,0 +1,17 @@
+﻿python : Traceback (most recent call last):
+At line:27 char:1
++ python -u work/check.py *> work/appcheck2.log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\work\check.py", line 4, in 
+<module>
+    a=AppTest.from_file("outputs/nilm_project/app.py", default_timeout=25).run()
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\app_test.py", 
+line 619, in from_file
+    raise FileNotFoundError(
+FileNotFoundError: AppTest script not found at 
+C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\work\outputs\nilm_project\app.py. 
+Relative paths are resolved against the file that calls AppTest.from_file().
