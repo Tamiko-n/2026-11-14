@@ -1,0 +1,37 @@
+﻿austin: 20 training, 5 unseen, 0 excluded homes
+california: 18 training, 5 unseen, 0 excluded homes
+newyork: 20 training, 5 unseen, 0 excluded homes
+puertorico: 8 training, 2 unseen, 15 excluded homes
+train: 75,900 windows
+val: 39,600 windows
+test: 39,600 windows
+unseen: 10,200 windows
+appending to existing experiment (6 previous variants kept)
+=== variant 1/2: LSTM
+[LSTM] epoch 01  train 0.7091  val 0.6606  val-F1 0.720
+[LSTM] epoch 02  train 0.5938  val 0.6491  val-F1 0.707
+[LSTM] epoch 03  train 0.5711  val 0.6296  val-F1 0.738
+[LSTM] epoch 04  train 0.5602  val 0.5950  val-F1 0.729
+[LSTM] epoch 05  train 0.5479  val 0.5853  val-F1 0.743
+python : 
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+At line:17 char:1
++ python -u -m nilm.experiment --only LSTM,GRU --epochs 5 --max-train 0 ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Asus\A...l known labels.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(
+=== variant 2/2: GRU
+[GRU] epoch 01  train 0.6924  val 0.6630  val-F1 0.731
+[GRU] epoch 02  train 0.5925  val 0.6348  val-F1 0.724
+[GRU] epoch 03  train 0.5661  val 0.6002  val-F1 0.733
+[GRU] epoch 04  train 0.5466  val 0.5988  val-F1 0.753
+[GRU] epoch 05  train 0.5354  val 0.5814  val-F1 0.735
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+saved -> C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\outputs\nilm_project\results\multiregion
