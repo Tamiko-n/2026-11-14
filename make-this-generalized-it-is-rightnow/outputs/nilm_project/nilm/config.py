@@ -17,8 +17,16 @@ RESULTS_DIR = PROJECT_DIR / "results"
 
 def region_cache(region, cache_dir=None):
     path = (CACHE_DIR if cache_dir is None else cache_dir) / region
-    fallback = DATA_ROOT / "nilm_project" / "cache" / region
-    return fallback if not (path / "_coverage.csv").is_file() and (fallback / "_coverage.csv").is_file() else path
+    candidates = (
+        path,
+        DATA_ROOT / "nilm_project" / "cache" / region,
+        PROJECT_DIR.parent.parent / "work" / "full_cache" / region,
+        PROJECT_DIR.parent.parent / "work" / "cache" / region,
+    )
+    for candidate in candidates:
+        if (candidate / "_coverage.csv").is_file() and any(candidate.glob("[0-9]*.parquet")):
+            return candidate
+    return path
 
 # Glob patterns (relative to DATA_ROOT) for each region's raw 1-minute CSVs.
 # Puerto Rico ships one folder per month/quantity: only *real power* is used.
