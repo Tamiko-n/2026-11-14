@@ -1,0 +1,45 @@
+﻿austin: 20 training, 5 unseen, 0 excluded homes
+california: 0 training, 5 unseen, 0 excluded homes
+newyork: 0 training, 5 unseen, 0 excluded homes
+puertorico: 0 training, 2 unseen, 15 excluded homes
+train: 23,000 windows
+val: 12,000 windows
+test: 39,600 windows
+unseen: 10,200 windows
+=== variant 1/3: MLP
+[MLP] epoch 01  train 0.7212  val 0.4171  val-F1 0.695
+[MLP] epoch 02  train 0.4542  val 0.3543  val-F1 0.717
+[MLP] epoch 03  train 0.4027  val 0.3397  val-F1 0.754
+[MLP] epoch 04  train 0.3835  val 0.3253  val-F1 0.777
+[MLP] epoch 05  train 0.3672  val 0.3367  val-F1 0.782
+python : 
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+At line:17 char:1
++ python -u -m nilm.experiment --preset multiregion --train-regions aus ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Asus\A...l known labels.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(
+=== variant 2/3: CNN1D
+[CNN1D] epoch 01  train 0.5611  val 0.3320  val-F1 0.764
+[CNN1D] epoch 02  train 0.3735  val 0.3109  val-F1 0.746
+[CNN1D] epoch 03  train 0.3487  val 0.2872  val-F1 0.796
+[CNN1D] epoch 04  train 0.3329  val 0.2837  val-F1 0.778
+[CNN1D] epoch 05  train 0.3182  val 0.2792  val-F1 0.795
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+=== variant 3/3: GBoost
+[GBoost] air1 fitted
+[GBoost] furnace1 fitted
+[GBoost] drye1 fitted
+[GBoost] refrigerator1 fitted
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+saved -> C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\outputs\nilm_project\results\austin_transfer
