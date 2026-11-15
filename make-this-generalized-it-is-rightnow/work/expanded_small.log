@@ -1,0 +1,21 @@
+﻿austin: 20 training, 5 unseen, 0 excluded homes
+california: 18 training, 5 unseen, 0 excluded homes
+newyork: 20 training, 5 unseen, 0 excluded homes
+puertorico: 13 training, 3 unseen, 9 excluded homes
+train: 81,650 windows
+val: 42,600 windows
+test: 42,600 windows
+unseen: 10,800 windows
+=== variant 1/3: MLP
+[MLP] epoch 01  train 0.7408  val 0.6696  val-F1 0.640
+[MLP] epoch 02  train 0.6538  val 0.6563  val-F1 0.673
+[MLP] epoch 03  train 0.6376  val 0.6364  val-F1 0.664
+=== variant 2/3: TCN
+[TCN] epoch 01  train 0.7729  val 0.6990  val-F1 0.645
+[TCN] epoch 02  train 0.6787  val 0.6823  val-F1 0.639
+[TCN] epoch 03  train 0.6646  val 0.6756  val-F1 0.667
+=== variant 3/3: Transformer
+[Transformer] epoch 01  train 0.7299  val 0.6688  val-F1 0.646
+[Transformer] epoch 02  train 0.6482  val 0.6538  val-F1 0.668
+[Transformer] epoch 03  train 0.6313  val 0.6355  val-F1 0.679
+saved -> C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\outputs\nilm_project\results\expanded_small
