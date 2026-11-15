@@ -1,0 +1,8 @@
+﻿austin: 20 training, 5 unseen, 0 excluded homes
+california: 18 training, 5 unseen, 0 excluded homes
+newyork: 20 training, 5 unseen, 0 excluded homes
+puertorico: 13 training, 3 unseen, 9 excluded homes
+train: 177,500 windows
+val: 42,600 windows
+test: 42,600 windows
+unseen: 10,800 windows
