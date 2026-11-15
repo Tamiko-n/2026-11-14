@@ -1,0 +1,87 @@
+﻿austin: 20 training, 5 unseen, 0 excluded homes
+california: 18 training, 5 unseen, 0 excluded homes
+newyork: 20 training, 5 unseen, 0 excluded homes
+puertorico: 8 training, 2 unseen, 15 excluded homes
+train: 75,900 windows
+val: 39,600 windows
+test: 39,600 windows
+unseen: 10,200 windows
+=== variant 1/8: MLP
+[MLP] epoch 01  train 0.7259  val 0.6940  val-F1 0.689
+[MLP] epoch 02  train 0.6222  val 0.6850  val-F1 0.711
+[MLP] epoch 03  train 0.5973  val 0.6736  val-F1 0.709
+[MLP] epoch 04  train 0.5852  val 0.6682  val-F1 0.722
+[MLP] epoch 05  train 0.5727  val 0.6517  val-F1 0.724
+python : 
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+At line:18 char:1
++ python -u work/train.py *> work/training.log
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (C:\Users\Asus\A...l known labels.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  warnings.warn(
+=== variant 2/8: CNN1D
+[CNN1D] epoch 01  train 0.6422  val 0.6472  val-F1 0.738
+[CNN1D] epoch 02  train 0.5548  val 0.6183  val-F1 0.751
+[CNN1D] epoch 03  train 0.5291  val 0.6142  val-F1 0.733
+[CNN1D] epoch 04  train 0.5164  val 0.5745  val-F1 0.761
+[CNN1D] epoch 05  train 0.5039  val 0.5681  val-F1 0.752
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2939: 
+UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+=== variant 3/8: Rule
+[Rule] fitted in 0.9s
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2939: 
+UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+=== variant 4/8: LogReg
+[LogReg] air1 fitted
+[LogReg] furnace1 fitted
+[LogReg] drye1 fitted
+[LogReg] refrigerator1 fitted
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+=== variant 5/8: GBoost
+[GBoost] air1 fitted
+[GBoost] furnace1 fitted
+[GBoost] drye1 fitted
+[GBoost] refrigerator1 fitted
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:2939: 
+UserWarning: y_pred contains classes not in y_true
+  warnings.warn("y_pred contains classes not in y_true")
+=== variant 6/8: CNN-GRU
+[CNN-GRU] epoch 01  train 0.6898  val 0.6772  val-F1 0.698
+[CNN-GRU] epoch 02  train 0.5864  val 0.6379  val-F1 0.715
+[CNN-GRU] epoch 03  train 0.5648  val 0.6438  val-F1 0.728
+[CNN-GRU] epoch 04  train 0.5484  val 0.5868  val-F1 0.744
+[CNN-GRU] epoch 05  train 0.5341  val 0.5825  val-F1 0.761
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+=== variant 7/8: LSTM
+[LSTM] epoch 01  train 0.7091  val 0.6859  val-F1 0.720
+[LSTM] epoch 02  train 0.5938  val 0.6741  val-F1 0.707
+[LSTM] epoch 03  train 0.5711  val 0.6670  val-F1 0.738
+[LSTM] epoch 04  train 0.5602  val 0.6172  val-F1 0.729
+[LSTM] epoch 05  train 0.5479  val 0.6111  val-F1 0.743
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+=== variant 8/8: GRU
+[GRU] epoch 01  train 0.6924  val 0.6856  val-F1 0.731
+[GRU] epoch 02  train 0.5925  val 0.6625  val-F1 0.724
+[GRU] epoch 03  train 0.5661  val 0.6283  val-F1 0.733
+[GRU] epoch 04  train 0.5466  val 0.6304  val-F1 0.753
+[GRU] epoch 05  train 0.5354  val 0.6173  val-F1 0.735
+C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\sklearn\metrics\_classification.py:614: 
+UserWarning: A single label was found in 'y_true' and 'y_pred'. For the confusion matrix to have the correct shape, 
+use the 'labels' parameter to pass all known labels.
+  warnings.warn(
+saved -> C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\outputs\nilm_project\results\multiregion
