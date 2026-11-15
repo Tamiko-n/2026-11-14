@@ -1,0 +1,9 @@
+﻿{'austin': 1, 'california': 1, 'newyork': 1, 'puertorico': 3}
+python : 2026-11-14 18:24:56.763 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': 
+missing ScriptRunContext! This warning can be ignored when running in bare mode.
+At line:25 char:6
++ '@ | python -u - *> work/appcheck.log
++      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-11-14 18:2...g in bare mode.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
