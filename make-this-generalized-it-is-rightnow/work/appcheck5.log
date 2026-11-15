@@ -1,0 +1,37 @@
+﻿python : 2026-11-14 18:33:44.704 WARNING streamlit.runtime.scriptrunner_utils.script_run_context: Thread 'MainThread': 
+missing ScriptRunContext! This warning can be ignored when running in bare mode.
+At line:17 char:1
++ python -u -c "import asyncio,runpy; from unittest.mock import patch;  ...
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (2026-11-14 18:3...g in bare mode.:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "<frozen runpy>", line 291, in run_path
+  File "<frozen runpy>", line 98, in _run_module_code
+  File "<frozen runpy>", line 88, in _run_code
+  File "work/check.py", line 5, in <module>
+    a=AppTest.from_file(str(Path("outputs/nilm_project/app.py").resolve()), default_timeout=25).run()
+      ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\app_test.py", 
+line 801, in run
+    return self._tree.run(timeout=timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\element_tree.py", 
+line 4251, in run
+    result = self._runner._run(widget_states, timeout=timeout)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\app_test.py", 
+line 698, in _run
+    self._tree = script_runner.run(
+                 ^^^^^^^^^^^^^^^^^^
+  File 
+"C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\local_script_runner.py", 
+line 198, in run
+    require_widgets_deltas(self, timeout)
+  File 
+"C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\site-packages\streamlit\testing\v1\local_script_runner.py", 
+line 266, in require_widgets_deltas
+    raise RuntimeError(err_string)
+RuntimeError: AppTest script run timed out after 25(s)
