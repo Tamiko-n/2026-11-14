@@ -1,0 +1,30 @@
+﻿python : Traceback (most recent call last):
+At line:21 char:6
++ '@ | python -u - *> work/ingest.log
++      ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Traceback (most recent call last)::String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  File "<stdin>", line 4, in <module>
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 619, in 
+result_iterator
+    yield _result_or_cancel(fs.pop())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 317, in 
+_result_or_cancel
+    return fut.result(timeout)
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 456, in result
+    return self.__get_result()
+           ^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\_base.py", line 401, in 
+__get_result
+    raise self._exception
+  File "C:\Users\Asus\AppData\Local\Programs\Python\Python311\Lib\concurrent\futures\thread.py", line 58, in run
+    result = self.fn(*self.args, **self.kwargs)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File 
+"C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\outputs\nilm_project\nilm\ingest.py", 
+line 34, in ingest_region
+    raise FileNotFoundError(f"No CSV files for region {region}")
+FileNotFoundError: No CSV files for region newyork
