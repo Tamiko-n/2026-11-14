@@ -1,0 +1,103 @@
+﻿# Multi-region NILM comparison
+
+Training regions: austin, california, newyork, puertorico. Seed 42.
+
+Each model receives 60 consecutive one-minute whole-home readings (grid plus available solar, converted to watts). Appliance meters provide ON/OFF and watts at the last minute. Unmetered appliance labels are excluded from loss and scoring.
+
+Each participating home's timeline is split 70% / 15% / 15%. In transfer runs, only training regions contribute to fitting and validation. Approximately 20% of eligible homes per region are held out completely. Short gaps of up to five minutes are interpolated within partitions. Windows with missing aggregate values are excluded. The scaler and physical ON thresholds use training windows only. Probability cutoffs for learned classifiers use validation macro-F1. The rule baseline uses a fixed decision cutoff.
+
+Per-home window caps: training 1150, evaluation 600 (0 means all). Windows are sampled evenly over each eligible period. Power errors are measured at sampled minutes.
+
+| Region | Training homes | Completely unseen homes | Excluded homes |
+|---|---|---|---|
+| austin | 1642, 2335, 2361, 2818, 3039, 3456, 3538, 4031, 4767, 5746, 6139, 661, 7536, 7719, 7951, 8156, 9019, 9160, 9278, 9922 | 4373, 7800, 7901, 8386, 8565 |  |
+| california | 1450, 1524, 1731, 203, 2606, 3687, 3864, 3938, 4495, 4934, 6377, 6547, 7062, 7114, 8061, 9213, 9612, 9775 | 5938, 8342, 8574, 8733, 9836 |  |
+| newyork | 1222, 1240, 1417, 142, 2318, 2358, 27, 3000, 3488, 3517, 387, 4283, 4550, 558, 5679, 5982, 5997, 9053, 914, 950 | 2096, 3700, 3996, 5058, 5587 |  |
+| puertorico | 11126, 11386, 1245, 2159, 371, 3987, 8997, 939 | 4204, 7667 | 10826, 10887, 1092, 11933, 1286, 2006, 2921, 3835, 4046, 4749, 6056, 6406, 7778, 8235, 9911 |
+
+## Classes and thresholds
+
+| Appliance | ON above (W) | Training ON / OFF | Unseen ON / OFF |
+|---|---:|---:|---:|
+| air1 | 37.7 | 10,361 / 45,989 | 1,066 / 6,734 |
+| furnace1 | 49.5 | 12,307 / 40,532 | 1,577 / 6,223 |
+| drye1 | 43.8 | 966 / 35,830 | 87 / 2,913 |
+| refrigerator1 | 18.4 | 33,785 / 21,217 | 5,153 / 3,247 |
+
+## Results on completely unseen homes
+
+The minimum course benchmarks per appliance are 85% accuracy, 75% balanced accuracy and 0.70 macro-F1. Higher targets are 90%, 85% and 0.80 respectively.
+
+| Model | Appliance | Accuracy | Balanced accuracy | Macro-F1 | MAE (W) | RMSE (W) | Benchmark |
+|---|---|---:|---:|---:|---:|---:|---|
+| MLP | air1 | 93.7% | 80.5% | 0.848 | 96.8 | 340.0 | Minimum |
+| MLP | furnace1 | 87.2% | 71.4% | 0.755 | 75.6 | 173.0 | Below |
+| MLP | drye1 | 98.5% | 82.0% | 0.855 | 60.7 | 459.4 | Minimum |
+| MLP | refrigerator1 | 71.9% | 66.8% | 0.673 | 45.2 | 68.2 | Below |
+| CNN1D | air1 | 93.7% | 81.4% | 0.850 | 85.8 | 315.6 | Minimum |
+| CNN1D | furnace1 | 87.6% | 76.1% | 0.787 | 72.7 | 166.7 | Minimum |
+| CNN1D | drye1 | 98.7% | 87.6% | 0.880 | 51.1 | 352.4 | Excellent |
+| CNN1D | refrigerator1 | 72.8% | 68.5% | 0.691 | 43.9 | 67.7 | Below |
+| Rule | air1 | 88.5% | 75.3% | 0.754 | 215.0 | 595.9 | Minimum |
+| Rule | furnace1 | 80.4% | 71.3% | 0.706 | 107.9 | 215.5 | Below |
+| Rule | drye1 | 79.4% | 73.8% | 0.522 | 495.9 | 1067.0 | Below |
+| Rule | refrigerator1 | 71.7% | 70.4% | 0.703 | 44.2 | 73.6 | Below |
+| LogReg | air1 | 93.8% | 81.4% | 0.852 | 115.1 | 353.9 | Minimum |
+| LogReg | furnace1 | 87.2% | 71.6% | 0.756 | 76.7 | 175.7 | Below |
+| LogReg | drye1 | 96.5% | 74.2% | 0.719 | 72.1 | 461.4 | Below |
+| LogReg | refrigerator1 | 62.9% | 59.0% | 0.590 | 54.2 | 75.0 | Below |
+| GBoost | air1 | 93.6% | 82.4% | 0.853 | 77.8 | 293.3 | Minimum |
+| GBoost | furnace1 | 87.4% | 75.1% | 0.779 | 74.6 | 191.0 | Minimum |
+| GBoost | drye1 | 98.0% | 86.7% | 0.837 | 40.2 | 286.7 | Excellent |
+| GBoost | refrigerator1 | 76.0% | 72.8% | 0.735 | 41.6 | 68.0 | Below |
+| CNN-GRU | air1 | 93.3% | 78.9% | 0.835 | 85.3 | 329.1 | Minimum |
+| CNN-GRU | furnace1 | 86.4% | 74.1% | 0.766 | 75.1 | 170.1 | Below |
+| CNN-GRU | drye1 | 98.9% | 86.6% | 0.895 | 60.1 | 456.4 | Excellent |
+| CNN-GRU | refrigerator1 | 73.3% | 68.9% | 0.696 | 43.4 | 68.3 | Below |
+
+## Performance by region
+
+Macro-F1 averaged equally across appliances with both ON and OFF support in each region.
+
+| Model | austin | california | newyork | puertorico | Training seconds | Inference ms per 1,000 |
+|---|---:|---:|---:|---:|---:|---:|
+| MLP | 0.790 | 0.851 | 0.648 | 0.723 | 15.0 | 4.7 |
+| CNN1D | 0.819 | 0.846 | 0.690 | 0.644 | 153.1 | 96.6 |
+| Rule | 0.693 | 0.727 | 0.590 | 0.432 | 0.9 | 1.5 |
+| LogReg | 0.744 | 0.790 | 0.605 | 0.542 | 2.1 | 6.4 |
+| GBoost | 0.832 | 0.852 | 0.676 | 0.531 | 29.3 | 35.2 |
+| CNN-GRU | 0.819 | 0.853 | 0.654 | 0.663 | 126.3 | 96.6 |
+
+## Model trade-offs
+
+CNN1D had the highest observed mean unseen-home macro-F1 (0.802). GBoost had the lowest mean unseen-home MAE (58.6 W). The table averages appliances equally. Results come from one seeded home split.
+
+| Model | Future-time macro-F1 | Unseen macro-F1 | Unseen MAE (W) | Appliances meeting minimum |
+|---|---:|---:|---:|---:|
+| CNN1D | 0.685 | 0.802 | 63.4 | 3 |
+| GBoost | 0.703 | 0.801 | 58.6 | 3 |
+| CNN-GRU | 0.683 | 0.798 | 66.0 | 2 |
+| MLP | 0.656 | 0.783 | 69.6 | 2 |
+| LogReg | 0.616 | 0.729 | 79.5 | 1 |
+| Rule | 0.641 | 0.671 | 215.8 | 1 |
+
+## Austin-only versus pooled training
+
+Both fits were scored on the same unseen windows with the pooled training run's physical ON thresholds. Each fit kept its own validation-tuned probability cutoffs. The change reflects both more homes and wider geographic coverage.
+
+| Model | Austin-only macro-F1 | Pooled macro-F1 | Change |
+|---|---:|---:|---:|
+| CNN1D | 0.768 | 0.802 | +0.034 |
+| GBoost | 0.783 | 0.801 | +0.018 |
+| MLP | 0.744 | 0.783 | +0.039 |
+
+The detailed CSV includes validation, future-time and unseen-home splits, per-region support counts and the four confusion matrix counts. The dashboard shows training curves, confusion matrices and actual versus predicted power.
+
+## Reproduce
+
+```powershell
+python -m nilm.experiment --preset multiregion --name multiregion --epochs 5 --max-train 0 --train-per-home 1150 --eval-per-home 600 --regions austin california newyork puertorico --only MLP,CNN1D,Rule,LogReg,GBoost,CNN-GRU
+python -m nilm.traces multiregion
+streamlit run app.py
+```
+
