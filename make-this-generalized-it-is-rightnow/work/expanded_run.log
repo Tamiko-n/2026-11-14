@@ -1,0 +1,70 @@
+﻿austin: 20 training, 5 unseen, 0 excluded homes
+california: 18 training, 5 unseen, 0 excluded homes
+newyork: 20 training, 5 unseen, 0 excluded homes
+puertorico: 13 training, 3 unseen, 9 excluded homes
+train: 177,500 windows
+val: 42,600 windows
+test: 42,600 windows
+unseen: 10,800 windows
+{'austin': {'raw_homes': 25, 'train_windows': 50000, 'available_train_windows': 7256324}, 'california': {'raw_homes': 23, 'train_windows': 45000, 'available_train_windows': 6624967}, 'newyork': {'raw_homes': 25, 'train_windows': 50000, 'available_train_windows': 3647869}, 'puertorico': {'raw_homes': 25, 'train_windows': 32500, 'available_train_windows': 1063027}}
+=== variant 1/14: MLP
+[MLP] epoch 01  train 0.6896  val 0.6478  val-F1 0.662
+[MLP] epoch 02  train 0.6276  val 0.6251  val-F1 0.681
+[MLP] epoch 03  train 0.6134  val 0.6182  val-F1 0.683
+=== variant 2/14: TCN
+[TCN] epoch 01  train 0.7143  val 0.6845  val-F1 0.651
+[TCN] epoch 02  train 0.6527  val 0.6679  val-F1 0.655
+[TCN] epoch 03  train 0.6384  val 0.6559  val-F1 0.668
+=== variant 3/14: Transformer
+[Transformer] epoch 01  train 0.6799  val 0.6457  val-F1 0.661
+[Transformer] epoch 02  train 0.6174  val 0.6214  val-F1 0.677
+[Transformer] epoch 03  train 0.6030  val 0.6152  val-F1 0.689
+=== variant 4/14: Inception1D
+[Inception1D] epoch 01  train 0.6985  val 0.6564  val-F1 0.666
+[Inception1D] epoch 02  train 0.6265  val 0.6410  val-F1 0.671
+[Inception1D] epoch 03  train 0.6132  val 0.6302  val-F1 0.677
+=== variant 5/14: Rule
+[Rule] fitted in 2.5s
+=== variant 6/14: LogReg
+[LogReg] air1 fitted
+[LogReg] furnace1 fitted
+[LogReg] drye1 fitted
+[LogReg] refrigerator1 fitted
+[LogReg] lights_plugs1 fitted
+[LogReg] waterheater1 fitted
+=== variant 7/14: GBoost
+[GBoost] air1 fitted
+[GBoost] furnace1 fitted
+[GBoost] drye1 fitted
+[GBoost] refrigerator1 fitted
+[GBoost] lights_plugs1 fitted
+[GBoost] waterheater1 fitted
+=== variant 8/14: CNN1D
+[CNN1D] epoch 01  train 0.6345  val 0.6045  val-F1 0.686
+[CNN1D] epoch 02  train 0.5802  val 0.5882  val-F1 0.714
+[CNN1D] epoch 03  train 0.5585  val 0.5761  val-F1 0.714
+=== variant 9/14: CNN-GRU
+[CNN-GRU] epoch 01  train 0.6611  val 0.6280  val-F1 0.684
+[CNN-GRU] epoch 02  train 0.6003  val 0.6108  val-F1 0.684
+[CNN-GRU] epoch 03  train 0.5857  val 0.5865  val-F1 0.676
+=== variant 10/14: LSTM
+[LSTM] epoch 01  train 0.6739  val 0.6404  val-F1 0.655
+[LSTM] epoch 02  train 0.6076  val 0.6135  val-F1 0.667
+[LSTM] epoch 03  train 0.5903  val 0.5990  val-F1 0.684
+=== variant 11/14: GRU
+[GRU] epoch 01  train 0.6675  val 0.6339  val-F1 0.666
+[GRU] epoch 02  train 0.6045  val 0.6129  val-F1 0.684
+[GRU] epoch 03  train 0.5873  val 0.5945  val-F1 0.689
+=== variant 12/14: CNN1D-noweight
+[CNN1D] epoch 01  train 0.4195  val 0.3839  val-F1 0.730
+[CNN1D] epoch 02  train 0.3817  val 0.3779  val-F1 0.731
+[CNN1D] epoch 03  train 0.3692  val 0.3671  val-F1 0.741
+=== variant 13/14: CNN1D-thr0.5
+[CNN1D] epoch 01  train 0.6345  val 0.6045  val-F1 0.686
+[CNN1D] epoch 02  train 0.5802  val 0.5882  val-F1 0.714
+[CNN1D] epoch 03  train 0.5585  val 0.5761  val-F1 0.714
+=== variant 14/14: CNN1D-focal
+[CNN1D] epoch 01  train 0.2036  val 0.1846  val-F1 0.681
+[CNN1D] epoch 02  train 0.1861  val 0.1814  val-F1 0.720
+[CNN1D] epoch 03  train 0.1791  val 0.1752  val-F1 0.715
+saved -> C:\Users\Asus\Documents\Codex\2026-11-14\make-this-generalized-it-is-rightnow\outputs\nilm_project\results\expanded
